@@ -14,21 +14,21 @@ import starter.springframework.data.druid.properties.DruidStatProperties;
 @ConditionalOnProperty("spring.datasource.druid.aop-patterns")
 public class DruidSpringAopConfiguration {
 
-    @Bean
-    public Advice advice() {
-        return new DruidStatInterceptor();
-    }
+	@Bean
+	public Advice advice() {
+		return new DruidStatInterceptor();
+	}
 
-    @Bean
-    public Advisor advisor(DruidStatProperties properties) {
-        return new RegexpMethodPointcutAdvisor(properties.getAopPatterns(), advice());
-    }
+	@Bean
+	public Advisor advisor(DruidStatProperties properties) {
+		return new RegexpMethodPointcutAdvisor(properties.getAopPatterns(), advice());
+	}
 
-    @Bean
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
-        advisorAutoProxyCreator.setProxyTargetClass(true);
-        return advisorAutoProxyCreator;
-    }
-    
+	@Bean
+	public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
+		DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
+		advisorAutoProxyCreator.setProxyTargetClass(true);
+		return advisorAutoProxyCreator;
+	}
+
 }

@@ -17,8 +17,15 @@ import starter.springframework.data.druid.stat.DruidWebStatFilterConfiguration;
 
 @Configuration
 @ConditionalOnClass({ DataSource.class, DruidDataSource.class })
-@EnableConfigurationProperties({DruidStatProperties.class})
-@Import({ DruidSpringAopConfiguration.class, DruidStatViewServletConfiguration.class, DruidWebStatFilterConfiguration.class, DruidFilterConfiguration.class, DruidDataSourceProvider.class, DefaultDruidDataSourceProvider.class })
+
+@EnableConfigurationProperties({ DruidStatProperties.class })
+
+@Import({ DruidSpringAopConfiguration.class, DruidStatViewServletConfiguration.class,
+		DruidWebStatFilterConfiguration.class, DruidFilterConfiguration.class, DruidDataSourceConfig.class,
+		DefaultDruidDataSourceConfig.class
+
+})
+
 public class DruidDataSourceAutoConfiguration {
-	
+
 }
